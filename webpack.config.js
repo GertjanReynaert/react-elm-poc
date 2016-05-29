@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const env = process.env.NODE_ENV || 'development';
@@ -38,26 +37,14 @@ module.exports = {
 
   module: {
     loaders: [{
-      test: /\.scss$/,
-      loader: 'style!css!postcss!sass',
-    }, {
       test: /\.js$/,
       loaders: ['babel'],
       exclude: /node_modules/,
-    }, {
-      test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.ttf$|\.eot$|\.woff$|\.woff2$|\.ico$/,
-      loader: 'file',
-    }, {
-      test: /\.json$/,
-      loader: 'json',
     },
     {
       test: /\.elm$/,
       exclude: [/elm-stuff/, /node_modules/],
       loader: 'elm-webpack',
-    },
-    ],
+    }],
   },
-
-  postcss: [autoprefixer()],
 };
